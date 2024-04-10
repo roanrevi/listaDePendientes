@@ -2,8 +2,9 @@ import React from 'react'
 import '../css/TodoSearch.css'
 import { useState } from 'react'
 
-const TodoSearch = ({setSearchValue, searchValue}) => {
 
+const TodoSearch = ({setSearchValue, searchValue}) => {
+    
     return (
     <>
     <div className='todo_search'>

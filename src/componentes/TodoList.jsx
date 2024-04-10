@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import TodoItem from './TodoItem'
 import '../css/TodoList.css'
-import { useEffect } from 'react'
+import LoadingTodo from './LoadingTodo'
+import ErrorTodo from './ErrorTodo'
 
-const TodoList = ({setTodos, todos,loading, setLoading}) => {
-    useEffect(()=>{
+
+
+const TodoList = ({setTodos, todos,loading,error}) => {
     
-    })
     const saveTodos=(newTodos)=>{
         localStorage.setItem('PENDIENTES_V1', JSON.stringify(newTodos));
         setTodos(newTodos);
@@ -16,7 +17,6 @@ const TodoList = ({setTodos, todos,loading, setLoading}) => {
     const deletedTodo= (text)=>{
         const newTodos = [...todos]; 
         const todoIndex=newTodos.findIndex((todo)=>todo.text===text);
-        console.log(todoIndex)
         newTodos.splice(todoIndex,1);        
         saveTodos(newTodos);       
     };
@@ -25,16 +25,18 @@ const TodoList = ({setTodos, todos,loading, setLoading}) => {
         const todoIndex = newTodos.findIndex((todo) => todo.text == text);
         newTodos[todoIndex].completed = true;
         saveTodos(newTodos);
-
-    };
-
+        };
+    
+    
+        
     return (
     < >
     <div className='container'> 
         <div className='contenedor'>
-        {loading && <p>Estamos cargando......</p>}
-        
-        {(!loading && todos.length===0 ) ?<h2>¡Crea tu primer pendiente!</h2> : <h2>Estos son tus pendientes</h2>}    
+        {loading && <LoadingTodo/>}
+        {error==true ? <h2><ErrorTodo/> </h2> : (!loading && todos.length===0 ) ?<h2>¡No tienes pendientes, crea el primero lo antes posible!</h2> : <h2>Tus pendientes al dia de hoy </h2>
+        }
+            
         
             <ul className='listas'>
                 {/* renderiza todos los componentes que esten dentro de este componente con la estructura que tenga en contenedor */}

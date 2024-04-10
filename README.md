@@ -1,8 +1,4 @@
-# React + Vite
+# Listado de pendientes
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Esta aplicacion nos da la posibilidad de generar lista de pendientes con fecha de creacion, dias los cuales lleva desde la creacion hasta el momento actual y al momento de cerrarla los dias que trascurrio, de igual manera tambien puede eliminar las tareas para dar por terminado todo.
+Se mostrara los pendientes totales y los pendientes completados, se podra hacer busqueda de pendientes por letras en el nombre del pendiente y se podran agregar pendientes a medida que se vaya requiriendo.
