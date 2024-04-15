@@ -4,12 +4,13 @@ import { FaTrash } from "react-icons/fa";
 
 
 const TodoItem = ({text, completed,  deletedTodo,onComplete,dateClose,dateOpen,daysTotal}) => {
-let date=Date.now()
+
 
     return (
     <>
     <li className='list_item'>
-        <input className="check" type="checkbox"  onChange={onComplete} />    
+    {!completed&&
+        <input className="check" type="checkbox"  onChange={onComplete} />  }  
         <p className={`tarea_pendiente ${completed && "completed"}`}>{text}</p>
         <div className='fechas'>
             <label >Apertura:</label>

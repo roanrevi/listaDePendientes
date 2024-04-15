@@ -1,11 +1,10 @@
-import React from 'react'
+import React, { useContext} from 'react'
+import { TodoCartContext } from '../context/TodoContext';
 import '../css/TodoCount.css'
 
-import { useContext } from 'react'
 
-
-const TodoCount = ({totalTodos,completedTodos}) => {
-   
+const TodoCount = () => {
+    const {totalTodos,completedTodos}=useContext(TodoCartContext)
     
     return (
         

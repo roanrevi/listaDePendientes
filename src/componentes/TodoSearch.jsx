@@ -1,10 +1,10 @@
-import React from 'react'
 import '../css/TodoSearch.css'
-import { useState } from 'react'
+import {useContext } from 'react'
+import { TodoCartContext } from '../context/TodoContext';
 
 
-const TodoSearch = ({setSearchValue, searchValue}) => {
-    
+const TodoSearch = () => {
+    const {searchValue,setSearchValue}=useContext(TodoCartContext)
     return (
     <>
     <div className='todo_search'>
