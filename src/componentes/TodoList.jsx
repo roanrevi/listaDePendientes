@@ -10,7 +10,7 @@ import Modal from './Modal'
 
 const TodoList = () => {
     const {setTodos,todos,loading,error,completeTodo,deletedTodo,searchedTodos,openModal}=useContext(TodoCartContext)
-    console.log(openModal)
+
     return (
     < >
     {openModal && (<Modal/>)}

@@ -22,7 +22,7 @@ const TodoItem = ({text, completed,  deletedTodo,onComplete,dateClose,dateOpen,d
         </div>
         <div className='fechas'>
             <label >Dias</label>
-            <label >50</label>
+            <label >{5}</label>
         </div>
         {/* <img className={`trash delete`} src="../img/icons8.svg"  alt="borrar" onClick={deletedTodo}/> */}
         <FaTrash className={`trash delete`} onClick={deletedTodo}/>

@@ -9,11 +9,9 @@ const TodoContext = ({children}) => {
     
     let parsedTodos;
     const [todos, setTodos] =useState([]);
-    const [loading, setLoadig] =useState(true);
+    const [loading, setLoading] =useState(true);
     const [error, setError] =useState(false);
     const [openModal, setOpenModal]=useState(false)
-
-    
 
     //Traigo la informacion de localStorage
     useEffect(()=>{
@@ -24,22 +22,13 @@ const TodoContext = ({children}) => {
             localStorage.setItem('PENDIENTES_V1',JSON.stringify(initialValue));
             parsedTodos=initialValue;
         } else{
-            parsedTodos=JSON.parse(localStorageTodos)
-            
+            parsedTodos=JSON.parse(localStorageTodos)            
             setTodos(parsedTodos);
-            setLoadig(false);
+            setLoading(false);
+
         };
-        const congrats = (()=>{
-        if(totalTodos === completedTodos&!parsedTodos)
-                {Swal.fire({
-                title: "Felicidades!",
-                text: "Ya completaste todos tus pendientes, continua con esta gran labor",
-                icon: "success"
-                });}                
-            })
-            congrats()        
         } catch (error) {
-            setLoadig(false);
+            setLoading(false);
             setError(true);
         }
         }, 3000);    
@@ -79,14 +68,25 @@ const TodoContext = ({children}) => {
             const newTodos = [...searchedTodos];
             const todoIndex = newTodos.findIndex((todo) => todo.text == text);
             newTodos[todoIndex].completed = true;
+            newTodos[todoIndex].dateClose = new Date().toString();
             saveTodos(newTodos);
             };   
-    
- 
     //defino la cantidad de pendientes 
         const completedTodos=todos.filter(todo=>todo.completed
         ).length;
         const totalTodos=todos.length;
+        
+            if (todos.length>0 && openModal==false) {
+                const congrats = (()=>{
+                    if(totalTodos === completedTodos&!parsedTodos)
+                            {Swal.fire({
+                            title: "Felicidades!",
+                            text: "Ya completaste todos tus pendientes, continua con esta gran labor",
+                            icon: "success"
+                            });}                
+                        })
+                        congrats() 
+                }
     return (
         <TodoCartContext.Provider value={{setTodos,searchValue, setSearchValue,
             loading,error,searchedTodos,completedTodos,totalTodos,parsedTodos, openModal, setOpenModal,saveTodos,completeTodo,deletedTodo,addTodo}}>
